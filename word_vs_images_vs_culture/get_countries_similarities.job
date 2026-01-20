@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#SBATCH --job-name=sim      # Job name
+#SBATCH --output=get_countries_similarities.out     # Output file name
+#SBATCH --cpus-per-task=4        # Schedule one core
+#SBATCH --time=30:00        # Run time (hh:mm:ss) - run for one hour max
+
+# Print out the hostname of the node the job is running on
+python get_countries_similarities.py $1

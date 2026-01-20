@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH --job-name=get-dbcv       # Job name
+#SBATCH --cpus-per-task=8        # Schedule one core
+#SBATCH --time=8:00        # Run time (hh:mm:ss) - run for one hour max
+#SBATCH --mem=100G        # Memory per CPU core
+
+# Set the output file name dynamically
+OUTPUT_FILE="get-dbcv_$1.out"
+
+# Redirect the script's output to the dynamic file
+exec > "$OUTPUT_FILE" 2>&1
+
+# Print out the hostname of the node the job is running on
+python compute_cluster_validity.py $1 $2 $3 $4 $5

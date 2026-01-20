@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH --job-name=duration       # Job name
+#SBATCH --cpus-per-task=16   # Schedule cores
+#SBATCH --mem=100G           # Memory per node
+#SBATCH --time=2:00:00      # Time limit hrs:min:sec
+
+# Set the output file name dynamically
+OUTPUT_FILE="duration_$1.out"
+
+# Redirect the script's output to the dynamic file
+exec > "$OUTPUT_FILE" 2>&1
+
+# Redirect output to the dynamically generated filename
+python duration_drawings.py $1 $2

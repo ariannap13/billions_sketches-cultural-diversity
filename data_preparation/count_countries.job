@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH --job-name=count_countries          # Job name
+#SBATCH --cpus-per-task=4        # Schedule 16 cores
+#SBATCH --time=1:00:00              # Run time (hh:mm:ss) - run for 30 minutes max
+#SBATCH --mem=150G           # Memory per node
+
+# Set the output file name dynamically
+OUTPUT_FILE="count_countries_$1.out"
+
+# Redirect the script's output to the dynamic file
+exec > "$OUTPUT_FILE" 2>&1
+
+# Print out the hostname of the node the job is running on
+python count_countries.py $1 $2

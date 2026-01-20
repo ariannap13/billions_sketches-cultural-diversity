@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#SBATCH --job-name=delete_out_files          # Job name
+#SBATCH --cpus-per-task=2        # Schedule 16 cores
+#SBATCH --time=20:00              # Run time (hh:mm:ss) - run for 30 minutes max
+
+# Print out the hostname of the node the job is running on
+python delete_out_files.py $1 

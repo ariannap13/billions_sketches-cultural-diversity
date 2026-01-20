@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#SBATCH --job-name=delete_files       # Job name
+#SBATCH --cpus-per-task=2       # Schedule one core
+#SBATCH --time=10:00        # Run time (hh:mm:ss) - run for one hour max
+
+# Set the output file name dynamically
+OUTPUT_FILE="delete_files_$1.out"
+
+# Redirect the script's output to the dynamic file
+exec > "$OUTPUT_FILE" 2>&1
+
+
+# Print out the hostname of the node the job is running on
+python delete_files.py $1 $2
