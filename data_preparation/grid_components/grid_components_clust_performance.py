@@ -9,7 +9,7 @@ for category in tqdm(categories['category']):
     for threshold_perc in [60,70,80,90,95]:
 
         true = pd.read_csv(f'../../data/umap_files/{category}_umap_clusters.csv')
-        predicted = pd.read_csv(f'../../results/continuum/grid_conn_component/{category}_umap_grid_connected_components_clust_threshold_perc_{threshold_perc}.csv')
+        predicted = pd.read_csv(f'../../data/grid_conn_component/{category}_umap_grid_connected_components_clust_threshold_perc_{threshold_perc}.csv')
 
         true["assigned"] = [1 if x!= -1 else 0 for x in true['cluster']]
         predicted["assigned"] = [1 if x!= -1 else 0 for x in predicted['connected_component']]
@@ -35,4 +35,4 @@ for category in tqdm(categories['category']):
 
 
 df_scores = pd.DataFrame(list_scores)
-df_scores.to_csv('../../results/continuum/grid_conn_component/precision_recall_f1_clusterable.csv', index=False)
+df_scores.to_csv('../../data/grid_conn_component/precision_recall_f1_clusterable.csv', index=False)

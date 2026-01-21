@@ -3,7 +3,6 @@ import numpy as np
 import networkx as nx
 from itertools import product
 from collections import defaultdict
-from sklearn.metrics.cluster import normalized_mutual_info_score
 from scipy import integrate
 
 use_disparity = True

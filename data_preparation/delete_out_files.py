@@ -1,4 +1,3 @@
-import zipfile
 import os
 import sys
 

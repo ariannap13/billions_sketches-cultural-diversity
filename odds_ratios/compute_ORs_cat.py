@@ -1,5 +1,4 @@
 import pickle
-import sys
 import pandas as pd
 from tqdm import tqdm
 import os
@@ -12,7 +11,7 @@ for category in tqdm(categories["category"], desc="Processing categories"):
     print(f"Processing category: {category}", flush=True)
 
     # cluster assignments
-    df_top_clusters = pd.read_csv(f"../data/for_mauro/non-clusterable/{category}_umap_clusters.csv")
+    df_top_clusters = pd.read_csv(f"../data/non-clusterable/{category}_umap_clusters.csv")
 
     # load embedding file containing countries
     with open(f"../data/umap_files/{category}_embeddings_dict.pkl", "rb") as f:

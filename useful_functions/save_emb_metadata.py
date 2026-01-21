@@ -1,9 +1,7 @@
 import pickle
-import sys
 import pandas as pd
 from umap_forma import *
 from tqdm import tqdm
-import umap
 import torch
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor

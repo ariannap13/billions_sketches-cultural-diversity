@@ -38,7 +38,7 @@ else:
 all_grid_counts = []
 for category in tqdm(categories_to_process['category']):
     # save grid cell
-    df_top_clusters_best = pd.read_csv(f"../../results/continuum/grid_data/{category}_umap_grid{cl_tag}.csv")
+    df_top_clusters_best = pd.read_csv(f"../../data/grid_data/{category}_umap_grid{cl_tag}.csv")
 
     # Count number of points in each grid cell
     grid_counts = df_top_clusters_best['grid_cell'].value_counts().reset_index()
@@ -62,7 +62,7 @@ for category in tqdm(categories_to_process['category']):
         print(f"Threshold perc: {threshold_perc}", flush=True)
 
         # save grid cell
-        df_top_clusters_best = pd.read_csv(f"../../results/continuum/grid_data/{category}_umap_grid{cl_tag}.csv")
+        df_top_clusters_best = pd.read_csv(f"../../data/grid_data/{category}_umap_grid{cl_tag}.csv")
 
         df_top_clusters_best_copy = df_top_clusters_best.copy()
 
@@ -167,4 +167,4 @@ for category in tqdm(categories_to_process['category']):
         plt.savefig(f"../../plots_downstream/umap_grid/{category}_grid_connected_components{cl_tag}_threshold_perc_{threshold_perc}.png")
         plt.close()
 
-        df_top_clusters_best.to_csv(f"../../results/continuum/grid_conn_component/{category}_umap_grid_connected_components{cl_tag}_threshold_perc_{threshold_perc}.csv", index=False)
+        df_top_clusters_best.to_csv(f"../../data/grid_conn_component/{category}_umap_grid_connected_components{cl_tag}_threshold_perc_{threshold_perc}.csv", index=False)

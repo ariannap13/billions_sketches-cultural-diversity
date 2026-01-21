@@ -4,13 +4,10 @@ from huggingface_hub import InferenceClient
 import sys
 import tqdm
 
-# append a new directory to sys.path
-sys.path.append('/Users/arpe/Documents/ITU/Projects/formafluens/meta-categorization/llama/')
-
 from config import HF_HUB_MODELS
 from prompting.datasets_config import (
     AssignConcretenessScore, AssignAuditoryScore, AssignGustatoryScore, AssignHapticScore, AssignInteroceptiveScore, AssignOlfactoryScore, AssignVisualScore,
-    AssignFootLegScore, AssignHandArmScore, AssignHeadScore, AssignMouthScore, AssignTorsoScore, MetaCategorization, AssignImagineryScore
+    AssignFootLegScore, AssignHandArmScore, AssignHeadScore, AssignMouthScore, AssignTorsoScore
 )
 
 from utils import parse_output
@@ -19,19 +16,16 @@ from utils import parse_output
 import warnings
 warnings.filterwarnings("ignore")
 
-task = "imaginery" # "concreteness", "auditory", "gustatory", "haptic", "interoceptive", "olfactory", "visual", "footleg", "handarm", "head", "mouth", "torso", "meta"
+task = "concreteness" # "concreteness", "auditory", "gustatory", "haptic", "interoceptive", "olfactory", "visual", "footleg", "handarm", "head", "mouth", "torso"
 
 if task == "concreteness":
-    list_words = pd.read_csv("../../missing_categories_concreteness.csv")
+    list_words = pd.read_csv("../../../../data/missing_categories_concreteness.csv")
 
 elif task == "meta":
-    list_words = pd.read_csv("../../all_categories.csv", names=["category"], header=None)
-
-elif task == "imaginery":
-    list_words = pd.read_csv("../../missing_categories_imageability.csv")
+    list_words = pd.read_csv("../../../../data/all_categories.csv", names=["category"], header=None)
 
 else:
-    list_words = pd.read_csv(f"../../missing_categories_sensorimotor.csv")
+    list_words = pd.read_csv(f"../../../../data/missing_categories_sensorimotor.csv")
 
 dictionary_tasks = {"concreteness": AssignConcretenessScore,
                     "auditory": AssignAuditoryScore,
@@ -45,8 +39,6 @@ dictionary_tasks = {"concreteness": AssignConcretenessScore,
                     "head": AssignHeadScore,
                     "mouth": AssignMouthScore,
                     "torso": AssignTorsoScore,
-                    "meta": MetaCategorization,
-                    "imaginery": AssignImagineryScore,
                     }
 
 class HuggingfaceChatTemplate:
@@ -158,4 +150,4 @@ if __name__ == "__main__":
     # Save outputs to df and csv
     df_outputs = pd.DataFrame(outputs, columns=["category", "score"])
 
-    df_outputs.to_csv(f"../results/{task}_scores_llama3.3.csv", index=False)
+    df_outputs.to_csv(f"../../../../data/{task}_scores_llama3.3.csv", index=False)

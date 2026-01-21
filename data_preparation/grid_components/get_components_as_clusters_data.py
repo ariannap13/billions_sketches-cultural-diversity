@@ -5,7 +5,7 @@ df = pd.read_csv('../../data/categories_nonclusterable.csv', names=['category'])
 
 for category in tqdm(df['category']):
     
-    df_comp = pd.read_csv(f"../../results/continuum/grid_conn_component/{category}_umap_grid_connected_components_threshold_perc_60.csv")
+    df_comp = pd.read_csv(f"../../data/grid_conn_component/{category}_umap_grid_connected_components_threshold_perc_60.csv")
     df_comp = df_comp[["key_id", "UMAP_1", "UMAP_2", "connected_component"]]
     df_comp.rename(columns={"connected_component": "cluster"}, inplace=True)
 

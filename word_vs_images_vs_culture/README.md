@@ -11,7 +11,7 @@ We first define a network of culture:
 2. Run ``./culture_network/put_files_together`` to create a single file from multiple periods.
 3. Run ``./culture_network/culture_similarity_network-clean.py`` to generate the network for cultural similarities between countries. 
 
-Then, we generate the similarity matrix of pairs of countries with ``get_countries_similarities.job` for images. For words, we follow this pipeline:
+Then, we generate the similarity matrix of pairs of countries with ``get_countries_similarities.py` for images. For words, we follow this pipeline:
 1. We need to translate the categories names in the language of the top-x countries. We first run ``./word-embeddings/check_countries.py`` to generate a mapping between countries and languages and create empty language files to populate with translated categories.
 2. We use Google Translate to do translate in each language, and save the translated words in the corresponding language csv file. 
 3. Then, we compute the embeddings in the given language with ``./word-embeddings/multilingual_languages.py``.

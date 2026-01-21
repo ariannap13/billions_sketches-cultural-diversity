@@ -7,45 +7,6 @@ ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 
 DATA_DIR = ROOT_DIR / "data"
 
-ANALYSE_TAL_DATA_DIR = DATA_DIR / "analyse-tal"
-
-SENTIMENT_DATA_DIR = DATA_DIR / "sentiment"
-
-TEN_DIM_DATA_DIR = DATA_DIR / "ten-dim"
-
-HATE_SPEECH_DATA_DIR = DATA_DIR / "hate-speech"
-
-CROWDFLOWER_DATA_DIR = DATA_DIR / "crowdflower"
-
-EMPATHY_DATA_DIR = DATA_DIR / "empathy#empathy_bin"
-
-POLITENESS_DATA_DIR = DATA_DIR / "hayati_politeness"
-
-HYPO_DATA_DIR = DATA_DIR / "hypo-l"
-
-INTIMACY_DATA_DIR = DATA_DIR / "questionintimacy"
-
-SAMESIDE_DATA_DIR = DATA_DIR / "same-side-pairs"
-
-TALKDOWN_DATA_DIR = DATA_DIR / "talkdown-pairs"
-
-SIMILARITY_DIR = DATA_DIR / "similarity_results"
-
-SRC_DIR = ROOT_DIR / "src"
-
-MODELS_DIR = ROOT_DIR / "models"
-
-WORKER_VS_GPT_DIR = SRC_DIR / "worker_vs_gpt"
-
-LORA_WEIGHTS_DIR = MODELS_DIR / "lora"
-
-LLAMA_CPP_DIR = MODELS_DIR / "llama_cpp"
-
-VICUNA_DIR = MODELS_DIR / "vicuna"
-
-LOGS_DIR = ROOT_DIR / "logs"
-
-
 @dataclass
 class TrainerConfig:
     """Trainer config class."""

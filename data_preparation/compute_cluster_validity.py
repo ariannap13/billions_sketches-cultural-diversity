@@ -3,8 +3,6 @@ import numpy as np
 import dbcv
 import sys
 
-print(dbcv.__version__)
-
 # ignore warnings
 import warnings
 warnings.filterwarnings("ignore")

@@ -1,3 +1,4 @@
 data/*
+plots_downstream/*
 __pycache__/
 *.pyc

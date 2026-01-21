@@ -6,8 +6,8 @@ import os
 import seaborn as sns
 
 # --- Load category names ---
-clusterable = pd.read_csv("./data/categories_files/categories_clusterable.csv", names=["category"])
-nonclusterable = pd.read_csv("./data/categories_files/categories_nonclusterable.csv", names=["category"])
+clusterable = pd.read_csv("../data/categories_files/categories_clusterable.csv", names=["category"])
+nonclusterable = pd.read_csv("../data/categories_files/categories_nonclusterable.csv", names=["category"])
 categories_all = pd.concat([clusterable, nonclusterable])["category"].tolist()
 
 # --- Load all arrays efficiently ---
@@ -72,7 +72,7 @@ if all_data.size > 0:
 
     plt.tight_layout()
     sns.despine()
-    plt.savefig("./plots_downstream/duration_plot.pdf")
+    plt.savefig("../plots_downstream/duration_plot.pdf")
 
 else:
     print("No data available for plotting.")

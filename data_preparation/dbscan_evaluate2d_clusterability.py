@@ -182,15 +182,6 @@ for category in tqdm(list_categories):
     df_top_clusters, tot_n_clusters = get_big_clusters(df_umap, best_dist)
     n_big_clusters = len(df_top_clusters[f"DBSCAN (d={best_dist})"].unique())
 
-    # df_key_ids = []
-    # for cluster in df_top_clusters[f"DBSCAN (d={best_dist})"].unique():
-    #     # get three key_id at random
-    #     key_id = df_top_clusters[df_top_clusters[f"DBSCAN (d={best_dist})"] == cluster].sample(3)['key_id'].values
-    #     for k in key_id:
-    #         df_key_ids.append([cluster, k])
-    # df_key_ids = pd.DataFrame(df_key_ids, columns=["cluster", "key_id"])
-    # df_key_ids.to_csv(f"../results/clusterability/{category}_key_ids.csv", index=False)
-
     # Plots
     plot_umap(df_umap, alpha_par, category)
     plot_umap_clusters(df_top_clusters, alpha_par, category, best_dist)

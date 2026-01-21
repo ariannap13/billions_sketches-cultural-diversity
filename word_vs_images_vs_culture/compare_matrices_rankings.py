@@ -1,6 +1,3 @@
-from email.mime import image
-from operator import mul
-import pickle
 import pandas as pd
 import rbo
 import matplotlib.pyplot as plt
@@ -8,8 +5,6 @@ import seaborn as sns
 import re
 import numpy as np
 from scipy import stats
-from collections import defaultdict
-
 
 word2vec_similarity = pd.read_pickle("../data/word2vec_similarity.pkl")
 multilingual_similarity = pd.read_pickle("../data/multilingual_similarity.pkl")
@@ -192,22 +187,7 @@ for category in image_similarity.index:
             print("Pizza first rank:", first_rank_pizza)
         else:
             print("No pizza match found after deduplication.")
-    # # clean image_rank_df to keep only one entry per category_cleaned (i.e., one cluster per category)
-    # image_rank_df['category_cleaned'] = image_rank_df.index.str.split("_").str[:-1].str.join("_")   
-    # # sort image_rank_df by rank
-    # image_rank_df = image_rank_df.sort_values('rank')
-    # image_rank_df = image_rank_df.drop_duplicates(subset=['category_cleaned'])
-    # # re-assign rank after dropping duplicates
-    # image_rank_df['rank_after'] = range(1, len(image_rank_df) + 1)
 
-    # if clean_category == "pizza":
-    #     print("Image category:", category)
-    #     # print the top-10 closest matches
-    #     top10 = image_rank_df.nsmallest(10, 'rank_after')
-    #     first_rank_pizza = image_rank_df.loc[same_category_indices[0], "rank_after"]
-    #     print("Top-10 closest matches:", top10)
-    #     print("Pizza first rank:", first_rank_pizza)
-    
     if first_rank == 1.0:
         tot_first += 1  # First non-self match is top-ranked
     elif first_rank <= 5.0:

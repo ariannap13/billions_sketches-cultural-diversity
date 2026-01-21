@@ -2,10 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 from tqdm import tqdm
-from sklearn.metrics.pairwise import cosine_similarity
-import sys
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 data_dir = "../../data/umap_files/"
 tag = "2d_"
@@ -134,12 +130,12 @@ for category in tqdm(categories_to_process['category']):
             df_top_clusters_best.loc[(df_top_clusters_best['UMAP_1'] >= x_min) & (df_top_clusters_best['UMAP_1'] < x_max) & (df_top_clusters_best['UMAP_2'] >= y_min) & (df_top_clusters_best['UMAP_2'] < y_max), 'grid_cell'] = f"{i},{j}"
 
     # save grid cell
-    df_top_clusters_best.to_csv(f"../../results/continuum/grid_data/{category}_umap_grid{cl_tag}.csv", index=False)
+    df_top_clusters_best.to_csv(f"../../data/grid_data/{category}_umap_grid{cl_tag}.csv", index=False)
 
     # Count number of points in each grid cell
     grid_counts = df_top_clusters_best['grid_cell'].value_counts().reset_index()
     grid_counts.columns = ['grid_cell', 'count']
     
     # save
-    grid_counts.to_csv(f"../../results/continuum/grid_count/{category}_umap_grid_count{cl_tag}.csv", index=False)
+    grid_counts.to_csv(f"../../data/grid_count/{category}_umap_grid_count{cl_tag}.csv", index=False)
 

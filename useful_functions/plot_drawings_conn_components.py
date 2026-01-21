@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import ast
 import matplotlib.pyplot as plt
-import sys
 
 category = "donut"
 
@@ -12,7 +11,7 @@ if not os.path.exists(results_dir):
     os.makedirs(results_dir)
 
 # Load key_ids of drawings to plot
-df_key_ids = pd.read_csv(f"../results/continuum/grid_conn_component_sampled_perc60.csv")
+df_key_ids = pd.read_csv(f"../data/grid_conn_component_sampled_perc60.csv")
 df_key_ids = df_key_ids[df_key_ids["category"]==category]
 
 list_tosave = []

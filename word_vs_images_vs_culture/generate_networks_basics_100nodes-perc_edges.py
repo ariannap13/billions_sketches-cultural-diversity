@@ -1,16 +1,11 @@
-import comm
 import pandas as pd
 import numpy as np
 import networkx as nx
 from itertools import product
 from collections import defaultdict
 import matplotlib.pyplot as plt
-from networkx.algorithms.community import greedy_modularity_communities
 from sklearn.metrics import normalized_mutual_info_score
 import seaborn as sns
-import igraph as ig
-import leidenalg
-from scipy import integrate
 import community.community_louvain as community_louvain
 
 
@@ -105,7 +100,7 @@ def get_partition_labels(graph):
 
 # Image similarities
 # Load top countries
-top_countries_names = pd.read_csv("../country_counts/table_counts.csv")["country"].str.upper().head(top_countries)
+top_countries_names = pd.read_csv("../data/table_counts.csv")["country"].str.upper().head(top_countries)
 # Load similarity data
 sim_images = pd.read_csv(f"../data/all_average_sims_top_{top_countries}_countries.csv")
 # Compute union of countries in sim_images
@@ -119,7 +114,7 @@ sim_images_mat = prepare_similarity_matrix(sim_images)
 
 # Language similarities
 sim_lang = pd.read_csv(f"../data/multilingual_similarity_average_top{top_countries}.csv")
-df_country_language = pd.read_csv("../country_counts/table_counts.csv")
+df_country_language = pd.read_csv("../data/table_counts.csv")
 country_to_lang = df_country_language[["country", "final_language"]][:top_countries] \
                 .set_index("country")["final_language"] \
                 .to_dict()
@@ -185,7 +180,6 @@ for p in thresholds:
 
 
 df_diag = pd.DataFrame(diag_results)
-print(df_diag)
 
 # Compare community similarity across threshold pairs (baseline is 0.1)
 labels_base = get_partition_labels(dict_graphs[0.1][0])
@@ -197,7 +191,6 @@ for p in thresholds:
     nmi_scores.append((p, nmi))
 
 df_nmi = pd.DataFrame(nmi_scores, columns=["threshold", "nmi"])
-print(df_nmi)
 
 plt.figure(figsize=(8, 6))
 
@@ -214,7 +207,7 @@ plt.ylim(0, 1)
 
 sns.despine()
 plt.tight_layout()
-plt.savefig("../paper_figs/nmi_image_thresholds.pdf", dpi=300)
+plt.savefig("../plots_downstream/nmi_image_thresholds.pdf", dpi=300)
 
 # Save networks
 for g, name in zip([dict_graphs[0.1][0], dict_graphs[0.1][1]], ["image", "language"]):
@@ -222,8 +215,8 @@ for g, name in zip([dict_graphs[0.1][0], dict_graphs[0.1][1]], ["image", "langua
     partition = community_louvain.best_partition(g, random_state=0)
     # set node attribute 'community'
     nx.set_node_attributes(g, partition, 'community')
-    nx.write_graphml(g, f"./data/{dimension}/network_{name}_top-edges_topcountries100-communities.graphml")
-    nx.write_gexf(g, f"./data/{dimension}/network_{name}_top-edges_topcountries100-communities.gexf")
+    nx.write_graphml(g, f"../data/{dimension}/network_{name}_top-edges_topcountries100-communities.graphml")
+    nx.write_gexf(g, f"../data/{dimension}/network_{name}_top-edges_topcountries100-communities.gexf")
 
 # for param in thresholds:
 #     nx.write_gexf(dict_graphs[param][0], f"./data/{dimension}/network_image_top-{param}_edges_topcountries100.gexf")

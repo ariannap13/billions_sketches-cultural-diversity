@@ -2,10 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 from tqdm import tqdm
-from sklearn.metrics.pairwise import cosine_similarity
-import sys
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 data_dir = "../data/umap_files/"
 tag = "2d_"

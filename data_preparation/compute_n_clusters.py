@@ -23,13 +23,6 @@ n_clusters_list.extend(count_clusters("../data/umap_files/non-clusterable/"))
 # Build dataframe
 df_n_clusters = pd.DataFrame(n_clusters_list, columns=["category", "n_clusters"])
 
-# # Summary
-# print(df_n_clusters["n_clusters"].describe(), flush=True)
-# print(df_n_clusters["n_clusters"].value_counts(), flush=True)
-# print(df_n_clusters[df_n_clusters["n_clusters"]==df_n_clusters["n_clusters"].min()], flush=True)
-# print(df_n_clusters[df_n_clusters["n_clusters"]==9], flush=True)
-# print(df_n_clusters[df_n_clusters["n_clusters"]==df_n_clusters["n_clusters"].max()], flush=True)
-
 # Plot distribution
 plt.figure(figsize=(10,6))
 sns.histplot(df_n_clusters["n_clusters"], discrete=True, color="darkorange", alpha=0.7)

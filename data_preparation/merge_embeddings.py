@@ -1,9 +1,7 @@
 # open h5 file and merge the embeddings from folder "results"
 
-import numpy as np
 import os
 import sys
-import h5py
 from forma import *
 import sys
 

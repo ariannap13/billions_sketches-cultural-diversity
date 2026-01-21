@@ -4,11 +4,8 @@ import sys
 from forma import *
 import time
 from sklearn.cluster import DBSCAN
-import matplotlib.pyplot as plt
 from collections import Counter
-from scipy.spatial import distance
 import numpy as np
-from sklearn.metrics import pairwise_distances
 
 
 

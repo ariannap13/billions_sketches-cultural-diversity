@@ -1,7 +1,6 @@
 import zipfile
 import os
 import sys
-import shutil
 
 category = sys.argv[1] # Category of drawings (e.g. "cat")
 directory = sys.argv[2] # Directory containing the zip files (e.g. "emb_csv_round6")
