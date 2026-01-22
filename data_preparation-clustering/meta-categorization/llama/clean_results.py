@@ -3,7 +3,7 @@ import pandas as pd
 
 task = "auditory"
 
-df_imagery = pd.read_csv(f"../../../../data/{task}_scores_llama3.3.csv")
+df_imagery = pd.read_csv(f"../../../data/{task}_scores_llama3.3.csv")
 
 def extract_rating(text):
     """
@@ -21,4 +21,4 @@ def extract_rating(text):
 df_imagery["score"] = df_imagery["score"].apply(extract_rating)
 
 
-df_imagery.to_csv(f"../../../../data/{task}_scores_llama3.3.csv", index=False)
+df_imagery.to_csv(f"../../../data/{task}_scores_llama3.3.csv", index=False)

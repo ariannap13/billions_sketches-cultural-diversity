@@ -60,7 +60,7 @@ for year_range in ["2010-2014", "2005-2009", "1999-2004", "1994-1998"]:
 
     print(f"Processing year range: {year_range}")
 
-    csv_file = f"./data/{dimensions}/{dimensions}_dimensions_{year_range}.csv"
+    csv_file = f"../../data/{dimensions}/{dimensions}_dimensions_{year_range}.csv"
     start_year = csv_file.split(f"dimensions_")[1].split("-")[0]
 
     # Build distance matrix by populating values
@@ -70,5 +70,5 @@ for year_range in ["2010-2014", "2005-2009", "1999-2004", "1994-1998"]:
     n_countries_with_data = (dist_matrix.notna().sum(axis=1) > 0).sum()
     print(f"Number of countries with data: {n_countries_with_data} out of {len(unique_countries)}")
 
-    dist_matrix.to_csv(f"./data/{dimensions}/{dimensions}_dist_matrix_{start_year}_top{top_countries}.csv")
+    dist_matrix.to_csv(f"../../data/{dimensions}/{dimensions}_dist_matrix_{start_year}_top{top_countries}.csv")
 

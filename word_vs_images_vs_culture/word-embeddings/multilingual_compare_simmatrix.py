@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import os
 
 all_languages = []
-for file in os.listdir("../data/languages"):
+for file in os.listdir("../../data/languages"):
     language = file.split("_")[1].split(".")[0]  # Extract language code from filename
     print(f"Processing language: {language}")
     all_languages.append(language)
@@ -28,12 +28,12 @@ for i in range(len(all_languages)):
         lang1 = all_languages[i]
         lang2 = all_languages[j]
         
-        with open(f"../data/embeddings_{lang1}.pkl", "rb") as f:
+        with open(f"../../data/embeddings_{lang1}.pkl", "rb") as f:
             embeddings1 = pkl.load(f)
-        with open(f"../data/embeddings_{lang2}.pkl", "rb") as f:
+        with open(f"../../data/embeddings_{lang2}.pkl", "rb") as f:
             embeddings2 = pkl.load(f)
         
-        categories = pd.read_csv("../data/categories_clusterable.csv", names=["category"])["category"].tolist()
+        categories = pd.read_csv("../../data/categories_clusterable.csv", names=["category"])["category"].tolist()
         # categories += pd.read_csv("../data/categories_nonclusterable.csv", names=["category"])["category"].tolist()
         
         similarity_df = compute_similarity(embeddings1, embeddings2, categories)
@@ -46,4 +46,4 @@ similarity_df = pd.DataFrame(similarity_dfs.items(), columns=["language_pair", "
 similarity_df[["lang1", "lang2"]] = similarity_df["language_pair"].str.split("_", expand=True)
 similarity_df.drop(columns=["language_pair"], inplace=True)
 # Save the similarity DataFrame to a csv file
-similarity_df.to_csv("../data/multilingual_similarity_average.csv", index=False)
+similarity_df.to_csv("../../data/multilingual_similarity_average.csv", index=False)

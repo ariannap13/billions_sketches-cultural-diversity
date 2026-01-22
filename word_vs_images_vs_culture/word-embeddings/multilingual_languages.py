@@ -6,7 +6,7 @@ import os
 from tqdm import tqdm
 
 all_languages = []
-for file in os.listdir("../data/languages"):
+for file in os.listdir("../../data/languages"):
     language = file.split("_")[1].split(".")[0]  # Extract language code from filename
     all_languages.append(language)
 
@@ -14,7 +14,7 @@ for file in os.listdir("../data/languages"):
 model = SentenceTransformer("Alibaba-NLP/gte-multilingual-base", trust_remote_code=True)
 
 for language in tqdm(all_languages):
-    category = pd.read_csv(f"../data/languages/categories_{language}.csv")
+    category = pd.read_csv(f"../../data/languages/categories_{language}.csv")
     # drop any row that is empty or contains only whitespace
     category["category"] = category["category"].str.strip()
     category = category[category["category"] != ""]  # Remove empty strings
@@ -28,5 +28,5 @@ for language in tqdm(all_languages):
     embeddings = model.encode(category, normalize_embeddings=True)  # passage_embeddings.shape (2, 768)
 
     # save embeddings to a pickle file
-    with open(f"../data/embeddings_{language}.pkl", "wb") as f:
+    with open(f"../../data/embeddings_{language}.pkl", "wb") as f:
         pickle.dump(embeddings, f)
