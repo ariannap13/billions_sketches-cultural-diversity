@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 import os
 from tqdm import tqdm

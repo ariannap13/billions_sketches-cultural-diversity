@@ -1,7 +1,5 @@
 import pandas as pd
 import os 
-from tqdm import tqdm
-from argostranslate import package, translate
 import ast
 
 df = pd.read_csv("../../data/country_counts/table_counts.csv")

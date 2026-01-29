@@ -1,5 +1,4 @@
 import pandas as pd
-import nltk
 import gensim.downloader
 from sklearn.metrics.pairwise import cosine_similarity
 import pickle
