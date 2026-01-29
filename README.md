@@ -97,10 +97,10 @@ Install ``dbcv`` with
 pip install git+https://github.com/FelSiq/DBCV.git
 ```
 
-The whole installation should take around X minutes to complete.
+The whole installation should take a couple of minutes to complete.
 
 # Use 
 
 Specific information and instructions to run on data are reported in individual folders, together with descriptions of expected outputs.
 
-The run time for code depends on the amount of data processed. Running image embeddings, dimensionality reduction, and clustering can be computationally intensive.
+The run time for code depends on the amount of data processed. Running dimensionality reduction and clustering can be time-intensive (up to 5 hours per concept).
