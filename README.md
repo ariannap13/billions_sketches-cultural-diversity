@@ -38,12 +38,19 @@ cd billions_sketches-cultural-diversity
 
 ## 2. Create a virtual environment with Python 3.8.16
 Make sure Python 3.8.16 is installed. 
+Note: Python 3.8.16 is no longer shipped by default on many systems.
+We strongly recommend using `pyenv` to install and manage this version.
 
-If Python 3.8.16 is not already installed, download and install it from the official [Python website](https://www.python.org/downloads/release/python-3816/).
-
-Make sure to:
-- select the correct installer for your operating system
-- check the box that says “Add Python to PATH” during installation (especially on Windows)
+1. Install `pyenv` (see [installation guides](https://github.com/pyenv/pyenv)).
+2. Install Python 3.8.16 using `pyenv`:
+    ```
+    pyenv install 3.8.16
+    ```
+    This may take a few minutes.
+3. Change to the project directory (if not already there) and run:
+    ```
+    pyenv local 3.8.16
+    ```
 
 Then create and activate a virtual environment:
 ```
