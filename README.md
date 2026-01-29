@@ -23,8 +23,29 @@ Image embeddings, dimensionality reduction and clustering have been performed on
 
 Follow the steps below to set up the environment and install all dependencies.
 
-## 1. Create a virtual environment with Python 3.8.16
-Make sure Python 3.8.16 is installed, then create and activate a virtual environment:
+## 1. Clone the repository
+First, make sure git is installed on your system. You can find more details on the installation process [here](https://github.com/git-guides/install-git).
+
+Clone the repository to your local machine using git:
+```
+git clone https://github.com/ariannap13/billions_sketches-cultural-diversity.git
+```
+
+Then navigate into the project directory:
+```
+cd billions_sketches-cultural-diversity
+```
+
+## 2. Create a virtual environment with Python 3.8.16
+Make sure Python 3.8.16 is installed. 
+
+If Python 3.8.16 is not already installed, download and install it from the official [Python website](https://www.python.org/downloads/release/python-3816/).
+
+Make sure to:
+- select the correct installer for your operating system
+- check the box that says “Add Python to PATH” during installation (especially on Windows)
+
+Then create and activate a virtual environment:
 ```
 python3.8 -m venv venv
 ```
@@ -40,7 +61,7 @@ Activate the virtual environment:
     venv\Scripts\activate
     ```
 
-## 2. Install required packages
+## 3. Install required packages
 Install all dependencies listed in `requirements.txt`:
 
 ```
