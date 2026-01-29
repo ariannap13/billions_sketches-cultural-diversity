@@ -42,19 +42,33 @@ Note: Python 3.8.16 is no longer shipped by default on many systems.
 We strongly recommend using `pyenv` to install and manage this version.
 
 1. Install `pyenv` (see [installation guides](https://github.com/pyenv/pyenv)).
-2. Install Python 3.8.16 using `pyenv`:
+2. Make sure pyenv is initialized in your shell (`~/.zshrc` or `~/.bashrc`):
+    ````
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    ````
+3. Run
+    ````
+    source ~/.zshrc
+    ````
+
+24. From the project root directory, install Python 3.8.16 using `pyenv`:
     ```
     pyenv install 3.8.16
-    ```
-    This may take a few minutes.
-3. Change to the project directory (if not already there) and run:
-    ```
     pyenv local 3.8.16
     ```
 
+    This may take a few minutes.
+5. Verify the python version
+    ````
+    python --version
+    ````
+
 Then create and activate a virtual environment:
 ```
-python3.8 -m venv venv
+python -m venv venv
 ```
 
 Activate the virtual environment:
